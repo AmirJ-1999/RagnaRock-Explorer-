@@ -1,0 +1,23 @@
+﻿@page
+@model Racnarock_explorer.Pages.AddTourModel
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Tour.Title">Title:</label>
+            <input type="text" class="form-control" asp-for="Tour.Title" />
+            <span asp-validation-for="Tour.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tour.Description">Description:</label>
+            <textarea class="form-control" asp-for="Tour.Description"></textarea>
+            <span asp-validation-for="Tour.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AudioFile">Audio File:</label>
+            <input type="file" class="form-control" asp-for="AudioFile" />
+            <span asp-validation-for="AudioFile" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload File</button>
+    </form>
+</div>

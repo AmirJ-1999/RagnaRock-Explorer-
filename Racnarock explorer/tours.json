@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 2,
+    "Title": "Punk Revolution",
+    "Description": "Oplev punkens vilde dage og dens indflydelse p\u00E5 musik og kultur.",
+    "AudioUrl": "/Music/Punk_evoulution.mp3"
+  },
+  {
+    "Id": 3,
+    "Title": "Heavy Metal Thunder",
+    "Description": "Udforsk heavy metal\u0027s opstigning og de legendariske bands, der formede genren.",
+    "AudioUrl": "/Music/Heavy_metal.mp3"
+  },
+  {
+    "Id": 4,
+    "Title": "Elektroniske Eksperimenter",
+    "Description": "Dyk ned i den elektroniske musiks historie og dens futuristiske lyde.",
+    "AudioUrl": "/Music/Electronic.mp3"
+  },
+  {
+    "Id": 5,
+    "Title": "Ice Cube",
+    "Description": "Ice Cold",
+    "AudioUrl": "/Music/Ice Cube - You Know How We Do It [Slowed to perfection  Reverb]_20240517112050.mp3"
+  }
+]

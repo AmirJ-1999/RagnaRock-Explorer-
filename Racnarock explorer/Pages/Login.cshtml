@@ -1,0 +1,25 @@
+﻿@page
+@model Racnarock_explorer.Pages.LoginModel
+
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header">
+            <h2>Login</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Username" class="form-label">Username:</label>
+                    <input asp-for="Username" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">Password:</label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Enter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

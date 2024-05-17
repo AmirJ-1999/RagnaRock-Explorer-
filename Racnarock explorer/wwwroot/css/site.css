@@ -1,0 +1,74 @@
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+    .navbar .navbar-brand .logo {
+        max-height: 40px;
+        margin-right: 10px;
+    }
+
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+    .hero img {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+    }
+
+    .hero .btn-orange {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        background-color: #EF6407;
+        color: white;
+        border: none;
+        margin-top: 20px;
+    }
+
+        .hero .btn-orange:hover {
+            background-color: darkorange;
+            color: white;
+        }
+
+.info-section-container {
+    display: flex;
+    justify-content: space-between; /* Ensure boxes are side by side */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.info-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    border: 2px solid #EF6407;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 30%; /* Ensure all boxes have the same width */
+}
+
+    .info-section h2 {
+        color: #EF6407;
+    }
+
+footer {
+    margin-top: 40px; /* Adjust the footer's position */
+}
