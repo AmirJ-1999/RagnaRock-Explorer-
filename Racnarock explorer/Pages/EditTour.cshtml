@@ -2,39 +2,30 @@
 @model Racnarock_explorer.Pages.EditTourModel
 
 <div class="container">
-    <div class="card shadow">
-        <div class="card-header">
-            <h2>Edit Tour</h2>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
         </div>
-        <div class="card-body">
-            @if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success">
-                    @TempData["SuccessMessage"]
-                </div>
-            }
-            <form method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label asp-for="Tour.Title" class="form-label">Title:</label>
-                    <input asp-for="Tour.Title" class="form-control" />
-                    <span asp-validation-for="Tour.Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Tour.Description" class="form-label">Description:</label>
-                    <textarea asp-for="Tour.Description" class="form-control"></textarea>
-                    <span asp-validation-for="Tour.Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Audio File:</label>
-                    <input type="file" name="AudioFile" class="form-control" />
-                    <input type="hidden" asp-for="Tour.AudioUrl" />
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
+    }
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Tour.Title">Title:</label>
+            <input type="text" class="form-control" asp-for="Tour.Title" />
+            <span asp-validation-for="Tour.Title" class="text-danger"></span>
         </div>
-    </div>
+        <div class="form-group">
+            <label asp-for="Tour.Description">Description:</label>
+            <textarea class="form-control" asp-for="Tour.Description"></textarea>
+            <span asp-validation-for="Tour.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AudioFile">Audio File:</label>
+            <input type="file" class="form-control" asp-for="AudioFile" />
+            <span asp-validation-for="AudioFile" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>
 
 @section Scripts {

@@ -31,14 +31,16 @@ namespace Racnarock_explorer.Pages
 
         public IActionResult OnGet(int id)
         {
-            _logger.LogInformation("OnGet called with id: {Id}", id);
+            if (HttpContext.Session.GetString("LoggedInUser") != "admin")
+            {
+                return RedirectToPage("/Login");
+            }
 
             var tours = LoadToursFromFile();
             Tour = tours.FirstOrDefault(t => t.Id == id);
 
             if (Tour == null)
             {
-                _logger.LogWarning("Tour with id: {Id} not found", id);
                 return RedirectToPage("/Tours");
             }
 
@@ -47,11 +49,8 @@ namespace Racnarock_explorer.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            _logger.LogInformation("OnPost called");
-
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning("ModelState is invalid");
                 return Page();
             }
 
@@ -67,20 +66,21 @@ namespace Racnarock_explorer.Pages
                 {
                     var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Music");
                     var audioUrl = await _fileUploadService.UploadFileAsync(AudioFile, uploadFolder);
+                    if (audioUrl == null)
+                    {
+                        ModelState.AddModelError("", "Error uploading file.");
+                        return Page();
+                    }
                     existingTour.AudioUrl = audioUrl;
                 }
 
                 SaveToursToFile(tours);
 
-                _logger.LogInformation("Tour updated successfully");
                 TempData["SuccessMessage"] = "Tour updated successfully.";
-                return RedirectToPage(new { id = Tour.Id });
-            }
-            else
-            {
-                _logger.LogWarning("Tour with id: {Id} not found for updating", Tour.Id);
+                return RedirectToPage("/Tours");
             }
 
+            ModelState.AddModelError("", "Tour not found.");
             return Page();
         }
 
