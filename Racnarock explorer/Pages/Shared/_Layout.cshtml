@@ -2,12 +2,58 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - Ragnarock Explorer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .translate-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        footer.extended-footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+            footer.extended-footer .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            footer.extended-footer .footer-section {
+                flex: 1;
+                padding: 0 20px;
+            }
+
+                footer.extended-footer .footer-section h4 {
+                    margin-bottom: 15px;
+                }
+
+                footer.extended-footer .footer-section p,
+                footer.extended-footer .footer-section a {
+                    color: #6c757d;
+                }
+
+        .footer-container {
+            color: #ff6600;
+        }
+
+            .footer-container a {
+                color: #ff6600;
+                text-decoration: none;
+            }
+
+                .footer-container a:hover {
+                    text-decoration: underline;
+                }
+    </style>
 </head>
 <body>
     <header>
@@ -23,20 +69,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Startside</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">About us</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Om os</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Tours">Tours</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Tours">Rundvisningen</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         @if (Context.RequestServices.GetService<IHttpContextAccessor>().HttpContext.Session.GetString("LoggedInUser") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Log ud</a>
                             </li>
                         }
                         else
@@ -55,14 +101,35 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Ragnarock Explorer - <a asp-area="" asp-page="/Privacy">About us</a>
+    <footer class="border-top footer text-muted extended-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt Os</h4>
+                <p>Har du spørgsmål eller brug for hjælp? Du er altid velkommen til at kontakte os på [kontaktoplysninger], eller besøg vores informationsskranke på museet. Vi ser frem til at byde dig velkommen til Ragnarock-museet – hvor rockens sjæl lever videre!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Følg Os</h4>
+                <p>Følg os på sociale medier for de seneste nyheder, opdateringer og spændende indhold fra Ragnarock-museet. Hold dig opdateret med kommende udstillinger, events og meget mere! Velkommen til Ragnarock-museet – din portal til rockmusikkens verden!</p>
+            </div>
+        </div>
+        <div class="container mt-3 footer-container">
+            &copy; 2024 - Ragnarock Explorer - <a asp-area="" asp-page="/Privacy">Om os</a>
         </div>
     </footer>
+    <div class="translate-container">
+        <div id="google_translate_element"></div>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Google Translate widget -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'da' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

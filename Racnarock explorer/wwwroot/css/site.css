@@ -72,3 +72,8 @@
 footer {
     margin-top: 40px; /* Adjust the footer's position */
 }
+
+#google_translate_element {
+    margin-right: 15px;
+}
+
